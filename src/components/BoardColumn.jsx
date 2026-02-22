@@ -13,17 +13,17 @@ export default function BoardColumn({
     <div
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => onDrop(e, status)}
-      className="bg-[#151821] rounded-lg p-4 flex-1 min-h-[300px]"
+      className="theme-surface border theme-border rounded-lg p-4 flex-1 min-h-[300px]"
     >
-      <h3 className="mb-4 text-sm font-semibold text-gray-400">{title}</h3>
+      <h3 className="mb-4 text-sm font-semibold theme-muted">{title}</h3>
 
       <div className="space-y-3">
-        {(tasks || []).map(task => (
+        {(tasks || []).map((task) => (
           <div
             key={task.id}
             draggable
             onDragStart={(e) => onDragStart(e, task.id)}
-            className="bg-[#1c1f2a] p-3 rounded cursor-move hover:bg-[#262a36]"
+            className="theme-surface-alt border theme-border p-3 rounded cursor-move theme-card-hover"
           >
             {task.title}
           </div>
@@ -34,13 +34,13 @@ export default function BoardColumn({
         <input
           value={columnInputs[status]}
           onChange={(e) =>
-            setColumnInputs(prev => ({
+            setColumnInputs((prev) => ({
               ...prev,
-              [status]: e.target.value
+              [status]: e.target.value,
             }))
           }
           placeholder="New task..."
-          className="flex-1 bg-[#1c1f2a] p-2 rounded text-sm outline-none"
+          className="flex-1 theme-input border theme-border p-2 rounded text-sm outline-none"
         />
         <button
           onClick={() => addTask(status)}

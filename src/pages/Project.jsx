@@ -7,6 +7,12 @@ import CalendarView from "../views/CalendarView";
 
 export default function Project() {
   const [view, setView] = useState("list");
+  const viewTabs = [
+    { id: "list", label: "Lists" },
+    { id: "board", label: "Board" },
+    { id: "timeline", label: "Timeline" },
+    { id: "calendar", label: "Calendar" },
+  ];
 
   const renderView = () => {
     switch (view) {
@@ -24,16 +30,22 @@ export default function Project() {
   return (
     <MainLayout>
       <div>
-
-        <div className="flex gap-4 mb-6">
-          <button onClick={() => setView("list")}>Lists</button>
-          <button onClick={() => setView("board")}>Board</button>
-          <button onClick={() => setView("timeline")}>Timeline</button>
-          <button onClick={() => setView("calendar")}>Calendar</button>
+        <div className="flex gap-3 mb-6 flex-wrap">
+          {viewTabs.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setView(tab.id)}
+              className={`theme-tab-button px-4 py-2 rounded text-sm ${
+                view === tab.id ? "theme-tab-button-active" : ""
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {renderView()}
-
       </div>
     </MainLayout>
   );
