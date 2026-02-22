@@ -26,7 +26,7 @@ export default function Project() {
       <div>
 
         <div className="flex gap-4 mb-6">
-          <button onClick={() => setView("list")}>List</button>
+          <button onClick={() => setView("list")}>Lists</button>
           <button onClick={() => setView("board")}>Board</button>
           <button onClick={() => setView("timeline")}>Timeline</button>
           <button onClick={() => setView("calendar")}>Calendar</button>
